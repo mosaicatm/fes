@@ -22,6 +22,5 @@
     "tests"
   ],
   "dependencies": {
-    "geoscript-js": "^1.0.0"
   }
 }
