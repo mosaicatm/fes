@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+
+<script src="FES.js" type="text/javascript"></script>
+
+<body>
+<script>
+
+	var trajectory = {
+		"trajectory": {
+			"dimension": 2,
+			"positions": [ {
+				"x": -111.98,
+				"y": 40.79
+			},{
+				"x": -75.24,
+				"y": 39.87
+			},{
+				"x": -84.43,
+				"y": 33.64
+			}]
+		}
+	};
+
+	var fes = new FES();
+	fes.fromJSON(fes.and([
+		fes.condition(
+				fes.value(FES.ValueType.PropertyName,"name"),
+				FES.Operator.Equal,
+				fes.value(FES.ValueType.Literal,"COTON")
+		),
+		fes.or([
+			fes.condition(
+				fes.value(FES.ValueType.Function,fes.function("TrajectoryQuery",[
+					fes.value(FES.ValueType.Literal,1000),
+					fes.value(FES.ValueType.Literal,18520),
+					fes.value(FES.ValueType.Literal,trajectory),
+					fes.value(FES.ValueType.Literal,1484254555000),
+					fes.value(FES.ValueType.Literal,300),
+					fes.value(FES.ValueType.Literal,30000),
+					fes.value(FES.ValueType.PropertyName,"lower"),
+					fes.value(FES.ValueType.PropertyName,"upper"),
+					fes.value(FES.ValueType.PropertyName,"geom")
+				])),
+				FES.Operator.Equal,
+				fes.value(FES.ValueType.Literal,true)
+			),
+			fes.condition(
+				fes.value(FES.ValueType.PropertyName,"lower"),
+				FES.Operator.GreaterThan,
+				fes.value(FES.ValueType.Literal,100
+			)),
+			fes.condition(
+				fes.value(FES.ValueType.PropertyName,"upper"),
+				FES.Operator.LessThan,
+				fes.value(FES.ValueType.Literal,8500)
+			)
+		])
+	]));
+	document.write(fes.toJSON());
+	var xml = fes.toXML();
+
+	console.log(xml);
+
+	fes.fromXML(xml);
+	document.write("<hr>" + fes.toJSON());
+
+//	var request = new XMLHttpRequest();
+//	var servicesURI = "http://<my-server>:3005/NCRWeb/index.jsp";
+//	var uri = servicesURI + '?ncr_service=wfs';
+//	request.open('POST', uri, false);
+//	request.setRequestHeader('Content-Type','application/xml');
+//	request.send('<wfs:GetFeature xmlns:ogc="http://www.opengis.net/ogc" xmlns:gml="http://www.opengis.net/gml" ' +
+//			'xmlns:wfs="http://www.opengis.net/wfs" service="WFS" version="1.0.0" maxFeatures="1000" ' +
+//			'outputFormat="GML2"><wfs:Query typeName="feature:sectors" srsName="EPSG:4326">' + xml + '</wfs:Query></wfs:GetFeature>');
+//	console.log(request.responseText);
+</script>
+</body>
+</html>

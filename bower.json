@@ -1,0 +1,27 @@
+{
+  "name": "FES",
+  "main": "FES.js",
+  "authors": [
+    "lindsey <lindsey@mosaicatm.com>"
+  ],
+  "description": "A javascript library for creating OGC Filter Encoding Schema (FES) xml documents for use with WFS requests.",
+  "moduleType": [],
+  "keywords": [
+    "OGC",
+    "Filter",
+    "WFS"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "geoscript-js": "^1.0.0"
+  }
+}

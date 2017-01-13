@@ -1,0 +1,82 @@
+{"Or": [
+	{
+		"operator": "PropertyIsEqualTo",
+		"operands": [
+			{
+				"type": "PropertyName",
+				"value": "fid"
+			},
+			{
+				"type": "Literal",
+				"value": "test123"
+			}
+		]
+	},
+	{
+		"And": [
+			{
+				"operator": "PropertyIsEqualTo",
+				"operands": [
+					{
+						"type": "Function",
+						"value": {
+							"function": {
+								"name": "FilterFunction",
+								"parameters": [
+									{
+										"type": "Literal",
+										"value": 1
+									},
+									{
+										"type": "Literal",
+										"value": 2
+									},
+									{
+										"type": "Literal",
+										"value": "three"
+									},
+									{
+										"type": "Literal",
+										"value": {
+											"foo": "bar"
+										}
+									}
+								]
+							}
+						}
+					},
+					{
+						"type": "Literal",
+						"value": true
+					}
+				]
+			},
+			{
+				"operator": "PropertyIsGreaterThan",
+				"operands": [
+					{
+						"type": "PropertyName",
+						"value": "altitude"
+					},
+					{
+						"type": "Literal",
+						"value": 100
+					}
+				]
+			},
+			{
+				"operator": "PropertyIsLessThan",
+				"operands": [
+					{
+						"type": "PropertyName",
+						"value": "altitude"
+					},
+					{
+						"type": "Literal",
+						"value": 8500
+					}
+				]
+			}
+		]
+	}
+]}
